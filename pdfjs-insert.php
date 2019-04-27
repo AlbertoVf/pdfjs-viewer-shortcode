@@ -23,7 +23,7 @@
 
 <body>
     <div id="container" class="container p-4">
-        <form id="form" action="index.php" method="POST" enctype="multipart/form-data">
+        <form id="form" action="pdfjs-index.php" method="POST" enctype="multipart/form-data">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="listas">Lista</label>
