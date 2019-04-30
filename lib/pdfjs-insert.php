@@ -30,11 +30,7 @@
                     <label class="input-group-text" for="listas">Lista</label>
                 </div>
                 <select class="custom-select" id="listas">
-                    <option selected value=" ">Selecciona...</option>
-                    <option value="LP_admitidos">Lista provisional de admitidos</option>
-                    <option value="LD_admitidos">Lista definitiva de admitidos</option>
-                    <option value="LP_seleccionados">Lista provisional de seleccionados</option>
-                    <option value="LD_seleccionados">Lista definitiva de seleccionados</option>
+                   <?php lista_nombres();?>
                 </select>
             </div>
             <!-- Seleccionar un fichero para subir -->

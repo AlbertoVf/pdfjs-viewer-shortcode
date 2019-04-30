@@ -34,3 +34,18 @@ function subir($t, $a)
     $error = "<div class='container alert alert-danger' role='alert'><span class='alert-link'>Error:</span> El archivo no ha sido subido</div>";
     echo (move_uploaded_file($t, $a)) ? $ok : $error;
 }
+function lista_nombres()
+{
+    $result = '<option selected value=" ">Selecciona...</option>';
+
+    $nombres = array(
+        'LP_admitidos ' => 'Lista provisional de admitidos',
+        'LD_admitidos' => 'Lista definitiva de admitidos',
+        'LP_seleccionados' => 'Lista provisional de seleccionados',
+        'LD_seleccionados' => 'Lista definitiva de seleccionados'
+    );
+    foreach ($nombres as $key => $value) {
+        $result . '<option value="' . $key . '">' . $value . '</option>';
+    }
+    return $result;
+}
