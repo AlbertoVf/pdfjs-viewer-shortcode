@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: PDFjs Viewer
+Plugin Name: PDF Viewer
 Plugin URI: http://byterevel.com/
-Description: Embed PDFs with the gorgeous PDF.js viewer
-Version: 1.3
-Author: Ben Lawson
+Description: Subir ficheros '.pdf' a una ruta seleccionada
+Version: 2.0
+Author: Ben Lawson, Alberto Vázquez
 Author URI: http://byterevel.com/
 License: GPLv2
 */
