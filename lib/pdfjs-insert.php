@@ -23,15 +23,18 @@
 
 <body>
     <div id="container" class="container p-4">
-        <form id="form" action="pdfjs-index.php" method="POST" enctype="multipart/form-data">
+        <form id="form" action="sobreescribir/index.php" method="POST" enctype="multipart/form-data">
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="listas">Lista</label>
                 </div>
                 <select class="custom-select" id="listas">
                     <option selected value=" ">Selecciona...</option>
-                    <option value="N1">Nombre 1</option>
-                    <option value="N2">Nombre 2</option>
+                    <option value="LP_admitidos">Lista provisional de admitidos</option>
+                    <option value="LD_admitidos">Lista definitiva de admitidos</option>
+                    <option value="LP_seleccionados">Lista provisional de seleccionados</option>
+                    <option value="LD_seleccionados">Lista definitiva de seleccionados</option>
                 </select>
             </div>
             <!-- Seleccionar un fichero para subir -->

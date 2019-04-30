@@ -26,6 +26,7 @@ function seleccionar_web()
     $ruta = $_SERVER['DOCUMENT_ROOT'] . '/' . $ruta[1];
     return $ruta;
 }
+
 function subir($t, $a)
 {
     global $carpeta_docs;

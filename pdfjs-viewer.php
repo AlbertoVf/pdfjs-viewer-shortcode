@@ -10,7 +10,7 @@ License: GPLv2
 */
 
 //==== Shortcode ====
-include_once 'pdfjs-rutas.php';
+include_once 'lib/pdfjs-rutas.php';
 
 add_shortcode("pdfjs-viewer", "pdfjs_handler");
 global $carpeta_docs;
@@ -52,5 +52,5 @@ function pdfjs_generator($incoming_from_handler)
 add_action('media_buttons', 'pdfjs_media_button', 12);
 function pdfjs_media_button()
 {
-  echo '<a href="' . plugins_url() . '/pdfjs-viewer-shortcode/pdfjs-insert.php" target="_target" id="insert-pdfjs" class="button">Insertar PDF</a>';
+  echo '<a href="' . plugins_url() . '/pdfjs-viewer-shortcode/lib/pdfjs-insert.php" target="_target" id="insert-pdfjs" class="button">Insertar PDF</a>';
 }
