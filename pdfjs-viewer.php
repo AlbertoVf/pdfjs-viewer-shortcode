@@ -57,11 +57,11 @@ function pdfjs_generator($incoming_from_handler)
 }
 
 if (is_admin()) {
-    add_action('after_setup_theme', 'pdfjs_media_button');
+ add_action('admin_bar_menu', 'pdfjs_media_button', 25);
 }
-
 function pdfjs_media_button()
 {
-    echo ('<div class="mt-2 mr-4 mb-2 ml-2 d-flex justify-content-end"> <button id="pdf-viewer" class="btn btn-light btn-sm">PDF Viewer</button> </div>');
+    //echo  '<button id="pdf-viewer">PDF Viewer</button>';
+    echo ('<div class="mt-2 mr-2 mb-2 ml-2 d-flex"> <button id="pdf-viewer" class="btn btn-dark">PDF Viewer</button> </div>');
 }
 ?>
