@@ -15,7 +15,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
+    /**
+     * Rellena el select de los nombres de documentos.
+     */
+    function nombresDocumentos() {
+        var select = '<option selected value=" ">Selecciona...</option>';
+        var nombres = {
+            'LP_admitidos': 'Lista provisional de admitidos',
+            'LD_admitidos': 'Lista definitiva de admitidos',
+            'LP_seleccionados': 'Lista provisional de seleccionados',
+            'LD_seleccionados': 'Lista definitiva de seleccionados'
+        };
+        for (let x in nombres) {
+            select += '<option value="' + x + '">' + nombres[x] + '</option><br/>';
+        }
+        return select;
+    }
     $(() => {
+        $('#listas').html(nombresDocumentos());
         $('#listas').on('change', () => {
             $('.alert').attr('hidden', true);
             var nombre = $('select#listas option:checked').val();
@@ -27,10 +44,10 @@
 <?php
 //==== Shortcode ====
 include_once('lib/pdfjs-rutas.php');
-
 add_shortcode("pdfjs-viewer", "pdfjs_handler");
 global $carpeta_docs;
 $root_pdf = Site_url() . $carpeta_docs;
+
 function pdfjs_handler($incoming_from_post)
 {
     $incoming_from_post = shortcode_atts(array('url' => 'bad-url.pdf', 'viewer_height' => '1360px', 'viewer_width' => '100%', 'fullscreen' => 'true', 'download' => 'true', 'print' => 'true', 'openfile' => 'false'), $incoming_from_post);
@@ -54,6 +71,7 @@ function pdfjs_generator($incoming_from_handler)
     if ($fullscreen == 'true') $fullscreen_link = '<a class="pdf-pdfjs" href="' . $final_url . '">Ver</a><br>';
     return $fullscreen_link;
 }
+
 add_action('after_setup_theme', 'pdfjs_media_button'); //BUG: la vista se visualiza en todas las paginas. Modificar para que solo se vea en Back-end;
 function pdfjs_media_button()
 {
@@ -75,11 +93,6 @@ function pdfjs_media_button()
                     <div class="input-group mb-2">
                         <div class="input-group-prepend"> <label class="input-group-text" for="listas">Lista</label></div>
                         <select class="custom-select" id="listas">
-                            <option selected value=" ">Selecciona...</option>
-                            <option value="LP_admitidos">Lista provisional de admitidos</option>
-                            <option value="LD_admitidos">Lista definitiva de admitidos</option>
-                            <option value="LP_seleccionados">Lista provisional de seleccionados</option>
-                            <option value="LD_seleccionados">Lista definitiva de seleccionados</option>
                         </select>
                     </div>
                     <div class="input-group mb-2">

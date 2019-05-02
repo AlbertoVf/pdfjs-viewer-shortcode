@@ -24,13 +24,16 @@
 <body>
     <div id="container" class="container p-4">
         <form id="form" action="sobreescribir/index.php" method="POST" enctype="multipart/form-data">
-
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="listas">Lista</label>
                 </div>
                 <select class="custom-select" id="listas">
-                   <?php lista_nombres();?>
+                    <option value=" " selected>Selecciona...</option>
+                    <option value="LP_admitidos">Lista provisional de admitidos</option>
+                    <option value="LD_admitidos">Lista definitiva de admitidos</option>
+                    <option value="LP_seleccionados">Lista provisional de seleccionados</option>
+                    <option value="LD_seleccionados">Lista definitiva de seleccionados</option>
                 </select>
             </div>
             <!-- Seleccionar un fichero para subir -->
@@ -52,7 +55,7 @@
                     <label class="input-group-text" for="categorias-select">Selecciona una Categoria</label>
                 </div>
                 <select class="custom-select" id="categorias-select" name="categorias-select">
-                    <?php include_once('pdfjs-rutas.php');
+                    <?php include_once 'pdfjs-rutas';
                     seleccionar_almacenamiento($ruta_docs); ?>
                 </select>
             </div>
