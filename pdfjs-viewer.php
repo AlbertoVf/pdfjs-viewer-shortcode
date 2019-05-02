@@ -72,16 +72,18 @@ function pdfjs_generator($incoming_from_handler)
     return $fullscreen_link;
 }
 
-add_action('after_setup_theme', 'pdfjs_media_button'); //BUG: la vista se visualiza en todas las paginas. Modificar para que solo se vea en Back-end;
+if (is_admin()) {
+    add_action('after_setup_theme', 'pdfjs_media_button');
+}
+
 function pdfjs_media_button()
 {
     echo ('<div class="mt-2 mr-4 mb-2 ml-2 d-flex justify-content-end">
-        <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#myModal">PDF Viewer</button>
+        <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#formulario-subida">PDF Viewer</button>
     </div>');
 }
 ?>
-
-<div class="modal" id="myModal">
+<div class="modal" id="formulario-subida">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
