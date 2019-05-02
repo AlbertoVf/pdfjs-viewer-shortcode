@@ -18,8 +18,10 @@
     $(() => {
         var rutaActual = window.location.href;
         rutaActual = rutaActual.split('/');
+        var t = screen.width / 3;
+        var l = screen.height / 3;
         $('#pdf-viewer').click(() => {
-            window.open(rutaActual[0] + '//' + rutaActual[2] + '/' + rutaActual[3] + '/wp-content/plugins/pdfjs-viewer-shortcode/lib/pdfjs-insert.php', "Subir PDF", "width=700,height=400");
+            window.open(rutaActual[0] + '//' + rutaActual[2] + '/' + rutaActual[3] + '/wp-content/plugins/pdfjs-viewer-shortcode/lib/pdfjs-insert.php', "Subir PDF", "left=" + t + ", top=" + l + ", height=320,width=700");
         });
     });
 </script>

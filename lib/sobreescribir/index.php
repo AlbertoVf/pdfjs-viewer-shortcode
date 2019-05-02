@@ -6,8 +6,11 @@ $_SESSION['temp'] = $t;
 $_SESSION['new'] = $a;
 
 if (!file_exists($a)) {
-    subir_pdf($t, $a);
-} else {
+    subir_pdf($t, $a); ?>
+    <script>
+        $('#form').attr('hidden', true);
+    </script>
+<?php } else {
     move_uploaded_file($t, $a . 'temp'); ?>
     <script>
         $('#form').attr('hidden', true);

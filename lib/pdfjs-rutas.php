@@ -1,7 +1,6 @@
 <?php
 $carpeta_docs = '/docs/'; //carpeta para guardar los documentos
 $ruta_docs = seleccionar_web() . $carpeta_docs; //ruta completa
-$ruta_plugin = seleccionar_web(). "/wp-content/plugins/pdfjs-viewer-shortcode/";
 
 function seleccionar_almacenamiento($ruta)
 {
