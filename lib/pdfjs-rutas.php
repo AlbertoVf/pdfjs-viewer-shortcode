@@ -1,6 +1,7 @@
 <?php
 $carpeta_docs = '/docs/'; //carpeta para guardar los documentos
 $ruta_docs = seleccionar_web() . $carpeta_docs; //ruta completa
+$ruta_plugin = seleccionar_web(). "/wp-content/plugins/pdfjs-viewer-shortcode/";
 
 function seleccionar_almacenamiento($ruta)
 {
@@ -27,25 +28,8 @@ function seleccionar_web()
     return $ruta;
 }
 
-function subir($t, $a)
+function subir_pdf($t, $a)
 {
     global $carpeta_docs;
-    $ok = "<div class='container alert alert-success' role='alert'>Archivo subido. Copia el siguiente texto para mostrar un enlace al pdf: <span class='alert-link'>[pdfjs-viewer url=" . explode($carpeta_docs, $a)[1] . "]</span></div>";
-    $error = "<div class='container alert alert-danger' role='alert'><span class='alert-link'>Error:</span> El archivo no ha sido subido</div>";
-    echo (move_uploaded_file($t, $a)) ? $ok : $error;
-}
-function lista_nombres()
-{
-    $result = '<option selected value=" ">Selecciona...</option>';
-
-    $nombres = array(
-        'LP_admitidos ' => 'Lista provisional de admitidos',
-        'LD_admitidos' => 'Lista definitiva de admitidos',
-        'LP_seleccionados' => 'Lista provisional de seleccionados',
-        'LD_seleccionados' => 'Lista definitiva de seleccionados'
-    );
-    foreach ($nombres as $key => $value) {
-        $result . '<option value="' . $key . '">' . $value . '</option>';
-    }
-    return $result;
+    echo (move_uploaded_file($t, $a)) ? "<div class='container alert alert-success' role='alert'>Archivo subido. Copia el siguiente texto para mostrar un enlace al pdf: <span class='alert-link'>[pdfjs-viewer url=" . explode($carpeta_docs, $a)[1] . "]</span></div>" : "<div class='container alert alert-danger' role='alert'><span class='alert-link'>Error:</span> El archivo no ha sido subido</div>";
 }

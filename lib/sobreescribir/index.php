@@ -6,7 +6,7 @@ $_SESSION['temp'] = $t;
 $_SESSION['new'] = $a;
 
 if (!file_exists($a)) {
-    subir($t, $a);
+    subir_pdf($t, $a);
 } else {
     move_uploaded_file($t, $a . 'temp'); ?>
     <script>

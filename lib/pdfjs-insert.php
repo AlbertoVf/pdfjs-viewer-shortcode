@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Subir Pdf</title>
+    <?php include_once 'pdfjs-rutas.php'; ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script>
@@ -55,8 +56,7 @@
                     <label class="input-group-text" for="categorias-select">Selecciona una Categoria</label>
                 </div>
                 <select class="custom-select" id="categorias-select" name="categorias-select">
-                    <?php include_once 'pdfjs-rutas';
-                    seleccionar_almacenamiento($ruta_docs); ?>
+                    <?php seleccionar_almacenamiento($ruta_docs); ?>
                 </select>
             </div>
             <button type="submit" class="btn btn-success" id="aceptar" hidden>Aceptar</button>
