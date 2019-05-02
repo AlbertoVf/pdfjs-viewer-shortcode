@@ -15,29 +15,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-    /**
-     * Rellena el select de los nombres de documentos.
-     */
-    function nombresDocumentos() {
-        var select = '<option selected value=" ">Selecciona...</option>';
-        var nombres = {
-            'LP_admitidos': 'Lista provisional de admitidos',
-            'LD_admitidos': 'Lista definitiva de admitidos',
-            'LP_seleccionados': 'Lista provisional de seleccionados',
-            'LD_seleccionados': 'Lista definitiva de seleccionados'
-        };
-        for (let x in nombres) {
-            select += '<option value="' + x + '">' + nombres[x] + '</option><br/>';
-        }
-        return select;
-    }
     $(() => {
-        $('#listas').html(nombresDocumentos());
-        $('#listas').on('change', () => {
-            $('.alert').attr('hidden', true);
-            var nombre = $('select#listas option:checked').val();
-            $('#file-name').attr('value', nombre);
-            (nombre != ' ') ? $('#aceptar').attr('hidden', false): $('#aceptar').attr('hidden', true);
+        var rutaActual = window.location.href;
+        rutaActual = rutaActual.split('/');
+        $('#pdf-viewer').click(() => {
+            window.open(rutaActual[0] + '//' + rutaActual[2] + '/' + rutaActual[3] + '/wp-content/plugins/pdfjs-viewer-shortcode/lib/pdfjs-insert.php', "Subir PDF", "width=700,height=400");
         });
     });
 </script>
@@ -78,45 +60,6 @@ if (is_admin()) {
 
 function pdfjs_media_button()
 {
-    echo ('<div class="mt-2 mr-4 mb-2 ml-2 d-flex justify-content-end">
-        <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#formulario-subida">PDF Viewer</button>
-    </div>');
+    echo ('<div class="mt-2 mr-4 mb-2 ml-2 d-flex justify-content-end"> <button id="pdf-viewer" class="btn btn-light btn-sm">PDF Viewer</button> </div>');
 }
 ?>
-<div class="modal" id="formulario-subida">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <p class="h5">Subir PDF</p>
-                <button type="button" class="close h5" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body" id="container">
-                <form id="form" action="lib/sobreescribir/index.php" method="POST" enctype="multipart/form-data">
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend"> <label class="input-group-text" for="listas">Lista</label></div>
-                        <select class="custom-select" id="listas">
-                        </select>
-                    </div>
-                    <div class="input-group mb-2">
-                        <div class="custom-file">
-                            <input id="archivo" class="form-control-file" type="file" name="archivo" accept=".pdf">
-                        </div>
-                    </div>
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend"> <span class="input-group-text">Nuevo nombre</span></div>
-                        <input type="text" name="filename" class="form-control " id="file-name" readonly>
-                    </div>
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="categorias-select">Selecciona una Categoria</label>
-                        </div>
-                        <select class="custom-select" id="categorias-select" name="categorias-select">
-                            <?php seleccionar_almacenamiento($ruta_docs) ?>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-success" id="aceptar" hidden>Aceptar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
