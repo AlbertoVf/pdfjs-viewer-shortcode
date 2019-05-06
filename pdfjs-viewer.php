@@ -57,11 +57,16 @@ function pdfjs_generator($incoming_from_handler)
 }
 
 if (is_admin()) {
- add_action('admin_bar_menu', 'pdfjs_media_button', 25);
+    add_action('admin_bar_menu', 'pdfjs_media_button', 25);
 }
 function pdfjs_media_button()
 {
-    //echo  '<button id="pdf-viewer">PDF Viewer</button>';
     echo ('<div class="mt-2 mr-2 mb-2 ml-2 d-flex"> <button id="pdf-viewer" class="btn btn-dark">PDF Viewer</button> </div>');
 }
+
+// add_action('admin_menu', 'pdfjs_menu');
+// function pdfjs_menu()
+// {
+//     add_menu_page('Subir PDF', 'Subir PDF', 'manage_options', /*ruta a plugin,*/ 'menu_init');
+// }
 ?>
